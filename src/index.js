@@ -4,12 +4,12 @@ const colors = require('colors');
 const got = require('got');
 
 const handleError = function(error) {
-  console.error(error.response.body);
+  console.log(colors.error(error.response.body));
 };
 
 const getLogoAscii = function() {
   console.log(
-    colors.yellow.bold(
+    colors.rainbow(
       `
     ______    __  __    ______    ______ _       __    ___ 
     /_  __/   / / / /   / ____/   / ____/| |     / /   /   |
@@ -21,20 +21,34 @@ const getLogoAscii = function() {
   );
 };
 
+const profile = function() {
+  const argv = process.argv[2];
+
+  if (!argv) {
+    return 'mediamonks';
+  }
+
+  return argv;
+};
+
+//console.log(profile());
+
 got('https://thefwa.com/api/profiles/mediamonks')
   .then(res => JSON.parse(res.body))
-  .then(data => {
-    if (!data) {
+  .then(profile => {
+    if (!profile) {
       console.log(
-        colors.red.bold(
+        colors.warn(
           'Oops, we have some problems getting the data...try again please.'
         )
       );
       return;
     }
 
+    // Display logo
     getLogoAscii();
 
-    console.log(data.total);
+    // Show the information of the profile
+    console.log(profile.total);
   })
   .catch(handleError);

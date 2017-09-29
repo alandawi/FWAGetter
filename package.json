@@ -20,7 +20,8 @@
   "author": "Alan G. Dawidowicz <alandawi@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "colors": "^1.1.2"
+    "colors": "^1.1.2",
+    "got": "^7.1.0"
   },
   "bugs": {
     "url": "https://github.com/alandawi/FWAGetter/issues"
