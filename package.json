@@ -1,0 +1,35 @@
+{
+  "name": "fwa-getter",
+  "description": "This package get the information from the THEFWA and shows into the terminal",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "bin": {
+    "fwagetter": "bin/fwa-getter.js"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "fwagetter": "node bin/fwa-getter.js",
+    "prepush": "npm run lint"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alandawi/FWAGetter.git"
+  },
+  "author": "Alan G. Dawidowicz <alandawi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/alandawi/FWAGetter/issues"
+  },
+  "homepage": "https://github.com/alandawi/FWAGetter#readme",
+  "keywords": [
+    "fwa",
+    "thefwa",
+    "api"
+  ]
+}
