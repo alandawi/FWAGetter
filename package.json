@@ -7,10 +7,10 @@
     "node": ">=4"
   },
   "bin": {
-    "fwagetter": "bin/fwa-getter.js"
+    "fwa-getter": "bin/fwa-getter.js"
   },
   "scripts": {
-    "fwagetter": "node bin/fwa-getter.js"
+    "fwa-getter": "node bin/fwa-getter.js"
   },
   "preferGlobal": true,
   "repository": {
