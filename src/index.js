@@ -7,12 +7,13 @@ const getLogoAscii = function() {
   console.log(
     colors.rainbow(
       `
-    ______    __  __    ______    ______ _       __    ___ 
-    /_  __/   / / / /   / ____/   / ____/| |     / /   /   |
-     / /     / /_/ /   / __/     / /_    | | /| / /   / /| |
-    / /     / __  /   / /___    / __/    | |/ |/ /   / ___ |
-   /_/     /_/ /_/   /_____/   /_/       |__/|__/   /_/  |_|                                            
-    `
+███████╗██╗    ██╗ █████╗      ██████╗ ███████╗████████╗████████╗███████╗██████╗ 
+██╔════╝██║    ██║██╔══██╗    ██╔════╝ ██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
+█████╗  ██║ █╗ ██║███████║    ██║  ███╗█████╗     ██║      ██║   █████╗  ██████╔╝
+██╔══╝  ██║███╗██║██╔══██║    ██║   ██║██╔══╝     ██║      ██║   ██╔══╝  ██╔══██╗
+██║     ╚███╔███╔╝██║  ██║    ╚██████╔╝███████╗   ██║      ██║   ███████╗██║  ██║
+╚═╝      ╚══╝╚══╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝                    
+   \n`
     )
   );
 };
@@ -26,6 +27,12 @@ const profile = function() {
   }
 
   return url + argv;
+};
+
+const getAwards = function(data) {
+  Object.entries(data).forEach(([key, value]) => {
+    console.log(colors.cyan(key + '(' + value + ')'));
+  });
 };
 
 got(profile())
@@ -45,7 +52,17 @@ got(profile())
     getLogoAscii();
 
     // Show the information of the profile
-    console.log(profile.total);
+    console.log(colors.cyan('Agency: ' + profile.name + '\n'));
+    console.log(colors.cyan('Website: ' + profile.website + '\n'));
+    console.log(colors.cyan('Showreel: ' + profile.showreel + '\n'));
+    console.log(colors.cyan('Total Offices: ' + profile.offices.length + '\n'));
+    console.log(colors.cyan('Total Awards: ' + profile.total + '\n'));
+
+    console.log(colors.cyan('Awards:'));
+    getAwards(profile.stats.awards);
+
+    // TODO: Check if is possible to get site of the day key
+    // TODO: Need to check if the data exists (showreel for example)
   })
   .catch(error => {
     console.log(colors.error(error.response.body));
