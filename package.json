@@ -10,9 +10,7 @@
     "fwagetter": "bin/fwa-getter.js"
   },
   "scripts": {
-    "lint": "eslint .",
-    "fwagetter": "node bin/fwa-getter.js",
-    "prepush": "npm run lint"
+    "fwagetter": "node bin/fwa-getter.js"
   },
   "preferGlobal": true,
   "repository": {
@@ -21,8 +19,9 @@
   },
   "author": "Alan G. Dawidowicz <alandawi@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "colors": "^1.1.2"
+  },
   "bugs": {
     "url": "https://github.com/alandawi/FWAGetter/issues"
   },
