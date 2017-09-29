@@ -5,7 +5,7 @@ const got = require('got');
 
 const getLogoAscii = function() {
   console.log(
-    colors.rainbow(
+    colors.cyan(
       `
 ███████╗██╗    ██╗ █████╗      ██████╗ ███████╗████████╗████████╗███████╗██████╗ 
 ██╔════╝██║    ██║██╔══██╗    ██╔════╝ ██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
@@ -58,11 +58,10 @@ got(profile())
     console.log(colors.cyan('Total Offices: ' + profile.offices.length + '\n'));
     console.log(colors.cyan('Total Awards: ' + profile.total + '\n'));
 
-    console.log(colors.cyan('Awards:'));
-    getAwards(profile.stats.awards);
-
-    // TODO: Check if is possible to get site of the day key
-    // TODO: Need to check if the data exists (showreel for example)
+    if (profile.stats.awards) {
+      console.log(colors.cyan('Awards:'));
+      getAwards(profile.stats.awards);
+    }
   })
   .catch(error => {
     console.log(colors.error(error.response.body));
