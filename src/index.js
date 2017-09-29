@@ -3,10 +3,6 @@
 const colors = require('colors');
 const got = require('got');
 
-const handleError = function(error) {
-  console.log(colors.error(error.response.body));
-};
-
 const getLogoAscii = function() {
   console.log(
     colors.rainbow(
@@ -23,20 +19,18 @@ const getLogoAscii = function() {
 
 const profile = function() {
   const argv = process.argv[2];
+  const url = 'https://thefwa.com/api/profiles/';
 
   if (!argv) {
-    return 'mediamonks';
+    return url + 'mediamonks';
   }
 
-  return argv;
+  return url + argv;
 };
 
-//console.log(profile());
-
-got('https://thefwa.com/api/profiles/mediamonks')
-  .then(res => JSON.parse(res.body))
-  .then(profile => {
-    if (!profile) {
+got(profile())
+  .then(response => {
+    if (!response) {
       console.log(
         colors.warn(
           'Oops, we have some problems getting the data...try again please.'
@@ -45,10 +39,14 @@ got('https://thefwa.com/api/profiles/mediamonks')
       return;
     }
 
+    const profile = JSON.parse(response.body);
+
     // Display logo
     getLogoAscii();
 
     // Show the information of the profile
     console.log(profile.total);
   })
-  .catch(handleError);
+  .catch(error => {
+    console.log(colors.error(error.response.body));
+  });
