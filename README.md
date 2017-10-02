@@ -11,7 +11,7 @@ Only need to define the name of the agency to get the information:
 ```sh
 fwa-getter mediamonks
 ```
-![fwa-getter](https://user-images.githubusercontent.com/1291730/31033325-f38ce2ce-a535-11e7-950c-5510444fd0cb.JPG)
+![fwa-getter](https://user-images.githubusercontent.com/1291730/31061454-0724a718-a6f8-11e7-9350-069d28aaf275.png)
 
 # ToDO:
   - Prevent null data in the response
